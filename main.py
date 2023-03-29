@@ -5,7 +5,7 @@ direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-
+# encrypt will break in current form - need to address indexes that go beyond 25 (return to start of alpha list)
 def encrypt(user_text, user_shift):
     user_text_list = user_text.split()
     encrypted_word = []
