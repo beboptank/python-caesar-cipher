@@ -15,7 +15,7 @@ def encrypt(user_text, user_shift):
         encrypted_word.append(alphabet[new_letter_index])
 
     encrypted_word = ''.join(encrypted_word)
-    print(encrypted_word)
+    print(f"The encrypted message is: {encrypted_word}.")
     return encrypted_word
 
 
@@ -32,10 +32,16 @@ def decrypt(user_text, user_shift):
         decrypted_word.append(alphabet[new_letter_index])
 
     decrypted_word = ''.join(decrypted_word)
-    print(decrypted_word)
+    print(f"The decrypted message is: {decrypted_word}.")
     return decrypted_word
 
 
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
+
+if direction == "encode":
+    encrypt(text, shift)
+
+if direction == "decode":
+    decrypt(text, shift)
