@@ -1,17 +1,12 @@
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
             't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
-
 
 # encrypts user message by shifting letters forward in alphabet by user_shift letters
 def encrypt(user_text, user_shift):
-    user_text_list = user_text.split()
     encrypted_word = []
 
-    for letter in text:
+    for letter in user_text:
         new_letter_index = alphabet.index(letter) + user_shift
 
         if new_letter_index > 25:
@@ -24,4 +19,23 @@ def encrypt(user_text, user_shift):
     return encrypted_word
 
 
-encrypt(text, shift)
+# decrypts user message by shifting letters backward in alphabet by user_shift letters
+def decrypt(user_text, user_shift):
+    decrypted_word = []
+
+    for letter in user_text:
+        new_letter_index = alphabet.index(letter) - user_shift
+
+        if new_letter_index < 0:
+            new_letter_index = abs(new_letter_index + 26)
+
+        decrypted_word.append(alphabet[new_letter_index])
+
+    decrypted_word = ''.join(decrypted_word)
+    print(decrypted_word)
+    return decrypted_word
+
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
