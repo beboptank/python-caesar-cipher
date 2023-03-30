@@ -21,6 +21,7 @@ def encrypt(user_text, user_shift):
 
     encrypted_word = ''.join(encrypted_word)
     print(encrypted_word)
+    return encrypted_word
 
 
 encrypt(text, shift)
