@@ -36,12 +36,39 @@ def decrypt(user_text, user_shift):
     return decrypted_word
 
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
+def caesar_cipher():
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
 
-if direction == "encode":
-    encrypt(text, shift)
+    new_word = []
 
-if direction == "decode":
-    decrypt(text, shift)
+    for letter in text:
+
+        if direction == "encode":
+            new_letter_index = alphabet.index(letter) + shift
+
+            if new_letter_index > 25:
+                new_letter_index = abs(new_letter_index - 26)
+
+            new_word.append(alphabet[new_letter_index])
+        elif direction == "decode":
+            new_letter_index = alphabet.index(letter) - shift
+
+            if new_letter_index < 0:
+                new_letter_index = abs(new_letter_index + 26)
+
+            new_word.append(alphabet[new_letter_index])
+        else:
+            print("Invalid option. Exiting program.")
+            return
+
+    new_word = ''.join(new_word)
+
+    if direction == "encode":
+        print(f"Your encoded word is: {new_word}")
+    else:
+        print(f"Your decoded word is: {new_word}")
+
+
+caesar_cipher()
